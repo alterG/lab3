@@ -3,7 +3,7 @@ package model;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
@@ -14,17 +14,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UsualPerson implements Person {
     @Id
     @Column
     int id;
 
-    @Getter
-    @Setter
     @Column
+    @Accessors(chain = false)
     String name;
 
     @Getter(AccessLevel.NONE)
@@ -42,5 +41,10 @@ public class UsualPerson implements Person {
 
     @Override
     public void sayHello(Person person) {}
+}
 
+class Rune {
+    public static void main(String[] args) {
+        System.out.println("gratz");
+    }
 }
