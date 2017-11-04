@@ -1,9 +1,8 @@
 import model.Country;
 import model.Person;
 import model.UsualPerson;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -12,19 +11,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HelloWorldTest {
 
-    static final String APPLICATION_CONTEXT_XML_FILE_NAME = "resources/application-context.xml";
+    static final String APPLICATION_CONTEXT_XML_FILE_NAME = "/src/test/resources/application-context.xml";
 
     private UsualPerson expectedPerson;
     private AbstractApplicationContext context;
 
-    @BeforeAll
+    @BeforeEach
     void setUp() throws Exception {
         context = new FileSystemXmlApplicationContext(
                 new String[]{APPLICATION_CONTEXT_XML_FILE_NAME});
         expectedPerson = getExpectedPerson();
     }
 
-    @AfterAll
+    @AfterEach
     void tearDown() throws Exception {
         if (context != null) {
             context.close();
