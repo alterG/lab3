@@ -39,6 +39,13 @@
             <version>LATEST</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Code generation (Lombok & CheckerFramework) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
