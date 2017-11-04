@@ -7,6 +7,22 @@
     <groupId>com.epam.lapin.spring</groupId>
     <artifactId>october</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>ioc</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <repositories>
+        <!--Spring-->
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -121,33 +137,34 @@
                 </configuration>
             </plugin>
 
-                <!--Surefire for tests-->
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>RELEASE</version>
-                    <configuration>
-                        <includes>
-                            <include>**/Test*.java</include>
-                            <include>**/*Test.java</include>
-                            <include>**/*Tests.java</include>
-                            <include>**/*TestCase.java</include>
-                        </includes>
-                        <properties>
-                            <!--<includeTags>fast</includeTags>-->
-                            <excludeTags>slow</excludeTags>
-                            <!--<configurationParameters>-->
-                            <!--junit.jupiter.conditions.deactivate = *-->
-                            <!--</configurationParameters>-->
-                        </properties>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.junit.platform</groupId>
-                            <artifactId>junit-platform-surefire-provider</artifactId>
-                            <version>RELEASE</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
+            <!--Surefire for tests-->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <includes>
+                        <include>**/Test*.java</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*Tests.java</include>
+                        <include>**/*TestCase.java</include>
+                    </includes>
+                    <properties>
+                        <!--<includeTags>fast</includeTags>-->
+                        <excludeTags>slow</excludeTags>
+                        <!--<configurationParameters>-->
+                        <!--junit.jupiter.conditions.deactivate = *-->
+                        <!--</configurationParameters>-->
+                    </properties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>LATEST</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
     </build>
 
