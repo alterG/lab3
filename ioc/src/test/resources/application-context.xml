@@ -2,22 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:utils="http://www.springframework.org/schema/util"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+>
 
-    <bean id="person" class="model.UsualPerson">
-        <property name="name" value="John Smith"/>
-        <property name="age" value="35"/>
-        <property name="country" ref="country"/>
-        <property name="contacts" ref="contacts"/>
-    </bean>
+    <bean id="person" class="model.UsualPerson"
+          p:name="John Smith"
+          p:age="35"
+          p:contacts-ref="contacts"
+          p:country-ref="country"/>
 
-    <bean id="country" class="model.Country">
-        <constructor-arg  name="codeName" value="RU"/>
-        <constructor-arg  name="name" value="Russia"/>
-        <constructor-arg  name="id" value="1"/>
-    </bean>
+    <bean id="country" class="model.Country"
+          c:codeName="RU"
+          c:name="Russia"
+          c:id="1"/>
+
+    <alias name="contacts" alias="address"/>
 
     <utils:list id="contacts" value-type="java.lang.String">
         <value>Impossible</value>
